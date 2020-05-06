@@ -32,12 +32,13 @@ class MovieContanier extends Component {
         
     };
     render() {
+        
         const results = this.state.results.map(result =>{
             return <Cards 
             key={result.id}
             title ={result.title} 
             overview ={result.overview}
-            image ={result.backdrop_path}
+            image ={"https://image.tmdb.org/t/p/w185" + result.poster_path}
             />
         })
         return (
