@@ -1,39 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Textfield from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 
-class Form extends Component {
-    state={
-        userInput:''
-    }
+const Form = (props) => {
 
-    handleInputChange = event => {
-        this.setState({userInput: event.target.value})
-        
-    }
+    return (
+        <Paper elevation={6} style={{ padding: '25px' }}>
+            <form>
+                <Textfield style={{marginBottom: "10px"}} fullWidth label="Type Movie Name"
+                    onChange={props.handleInputChange}
+                    value={props.value} 
+                    name="search"
+                    type="text"
+                    id="search"/>
+                
+                <Button type="submit" variant="contained" style={{padding: '10px'}} onClick={props.handleInputSubmit } >Search</Button>
+            </form>
+        </Paper>
+    )
 
-    handleSubmit = (event) => {
-       event.preventDefault()
-       const {userInput} = this.state;
-       const {onFormSubmit} = this.props;
-       console.log(this.state.userInput)
-       
-       onFormSubmit(userInput);
-    }
-
-  
-
-    render() {
-        return (
-           <Paper elevation={6} style={{padding: '25px'}}>
-             <form onSubmit={this.handleSubmit}>
-                 <Textfield fullWidth label="Type Movie Name"
-                 onChange={this.handleInputChange}/>
-             </form>
-           </Paper>
-        )
-    }
 }
 
 export default Form
+
+
