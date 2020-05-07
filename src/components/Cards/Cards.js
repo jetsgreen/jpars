@@ -4,31 +4,28 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 400,
+    maxWidth: 300,
   },
   media: {
     height: 200,
   },
+
 });
 
 export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <div style={{display: 'flex', flexDirection: "column"}}>
+    <Card className={classes.root} style={{margin: '10px'}}>
       <CardActionArea>
         <img src={props.image} alt="poster"/>
-        {/* <CardMedia
-          className={classes.media}
-          image={"/static/images/cards/contemplative-reptile.jpg"}
-          title="movie-poster"
-        /> */}
+      
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
@@ -40,13 +37,12 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-         Play
+        <Button size="small" color="primary" onClick={props.clicked}>
+         View
         </Button>
-        <Button size="small" color="primary">
-          View
-        </Button>
+        
       </CardActions>
     </Card>
+    </div>
   );
 }
